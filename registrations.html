@@ -12,7 +12,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="registration.html">Registration</a></li>
+                <li><a href="registrations.html">Registration</a></li>
                 <li><a href="team.html">Team</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
@@ -20,15 +20,92 @@
     </header>
 
     <main>
-        <h1>Registration</h1>
-        <p>Welcome to the Registration page. Please fill out the form below to register for our services.</p>
-        <!-- Add registration form here -->
+        <section class="registration-section">
+            <h1>Registration</h1>
+            <div class="registration-container">
+                <!-- Internship Registration -->
+                <div class="registration-form">
+                    <h2>Internship Registration</h2>
+                    <form action="/register-internship" method="post">
+                        <label for="intern-name">Name:</label>
+                        <input type="text" id="intern-name" name="name" required>
+
+                        <label for="intern-email">Email:</label>
+                        <input type="email" id="intern-email" name="email" required>
+
+                        <label for="intern-phone">Phone Number:</label>
+                        <input type="tel" id="intern-phone" name="phone" required>
+
+                        <label for="intern-college">College:</label>
+                        <input type="text" id="intern-college" name="college" required>
+
+                        <label for="intern-resume">Resume (PDF):</label>
+                        <input type="file" id="intern-resume" name="resume" accept=".pdf" required>
+
+                        <label for="intern-cover-letter">Cover Letter:</label>
+                        <textarea id="intern-cover-letter" name="coverLetter" rows="4" required></textarea>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                <!-- Training Registration -->
+                <div class="registration-form">
+                    <h2>Training Registration</h2>
+                    <form action="/register-training" method="post">
+                        <label for="training-name">Name:</label>
+                        <input type="text" id="training-name" name="name" required>
+
+                        <label for="training-email">Email:</label>
+                        <input type="email" id="training-email" name="email" required>
+
+                        <label for="training-phone">Phone Number:</label>
+                        <input type="tel" id="training-phone" name="phone" required>
+
+                        <label for="training-program">Program of Interest:</label>
+                        <input type="text" id="training-program" name="program" required>
+
+                        <label for="training-payment">Payment Amount:</label>
+                        <input type="number" id="training-payment" name="payment" required>
+
+                        <label for="training-comments">Comments:</label>
+                        <textarea id="training-comments" name="comments" rows="4"></textarea>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                <!-- Faculty/Industry Expert Registration -->
+                <div class="registration-form">
+                    <h2>Join as Faculty/Industry Expert</h2>
+                    <form action="/register-faculty" method="post">
+                        <label for="faculty-name">Name:</label>
+                        <input type="text" id="faculty-name" name="name" required>
+
+                        <label for="faculty-email">Email:</label>
+                        <input type="email" id="faculty-email" name="email" required>
+
+                        <label for="faculty-phone">Phone Number:</label>
+                        <input type="tel" id="faculty-phone" name="phone" required>
+
+                        <label for="faculty-specialization">Specialization:</label>
+                        <input type="text" id="faculty-specialization" name="specialization" required>
+
+                        <label for="faculty-resume">Resume (PDF):</label>
+                        <input type="file" id="faculty-resume" name="resume" accept=".pdf" required>
+
+                        <label for="faculty-linkedin">LinkedIn Profile:</label>
+                        <input type="url" id="faculty-linkedin" name="linkedin" required>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>Thank you for visiting</p>
         <p>&copy; 2024 VC</p>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>

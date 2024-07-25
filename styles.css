@@ -81,3 +81,272 @@ main {
 h1 {
     margin-bottom: 20px;
 }
+
+/* Other existing styles */
+
+.projects-section {
+    padding: 20px;
+}
+
+.projects-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.completed-projects, .ongoing-projects {
+    width: 45%;
+}
+
+.completed-projects h2, .ongoing-projects h2 {
+    margin-bottom: 10px;
+}
+
+.completed-projects ul, .ongoing-projects ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.dataset-request {
+    margin-top: 20px;
+}
+
+.dataset-request h2 {
+    margin-bottom: 10px;
+}
+
+.dataset-request form {
+    display: flex;
+    flex-direction: column;
+}
+
+.dataset-request label {
+    margin-top: 10px;
+}
+
+.dataset-request input, .dataset-request textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dataset-request button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dataset-request button:hover {
+    background-color: #555;
+}
+
+/* Other existing styles */
+
+.login-section {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.login-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-section input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-section button:hover {
+    background-color: #555;
+}
+
+
+/* Other existing styles */
+
+/* Other existing styles */
+
+.team-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.team-section h1 {
+    margin-bottom: 20px;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.faculty-member {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.faculty-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.faculty-member h2 {
+    margin-bottom: 10px;
+}
+
+.faculty-member p {
+    margin-bottom: 5px;
+}
+
+.intern-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.intern-section h1 {
+    margin-bottom: 20px;
+}
+
+.intern-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.intern-member {
+    width: 200px;
+    margin: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.intern-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.intern-member h3 {
+    margin-bottom: 8px;
+}
+
+.intern-member p {
+    margin-bottom: 5px;
+}
+
+
+/* Other existing styles */
+
+/* Other existing styles */
+
+/* Other existing styles */
+
+.registration-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.registration-section h1 {
+    margin-bottom: 20px;
+}
+
+.registration-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.registration-form {
+    width: 400px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.registration-form h2 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.registration-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.registration-form input,
+.registration-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.registration-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Ensure all forms align the same */
+.registration-container .registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-container .registration-form button {
+    margin-top: auto; /* Push button to the bottom of the form */
+}
