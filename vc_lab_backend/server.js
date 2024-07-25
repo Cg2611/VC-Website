@@ -105,6 +105,34 @@ app.post('/submit-contact-form', upload.none(), (req, res) => {
     });
 });
 
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    // Query to get the plain-text password from the database
+    db.query('SELECT password FROM faculty WHERE username = ?', [username], (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send('Server error');
+        }
+
+        if (results.length > 0) {
+            const storedPassword = results[0].password;
+
+            // Compare the entered password with the stored password
+            if (password === storedPassword) {
+                // Password matches, redirect to another page
+                res.redirect('/landing.html'); // Replace with your target page
+            } else {
+                // Password does not match
+                res.status(401).send('Invalid username or password');
+            }
+        } else {
+            // Username does not exist
+            res.status(401).send('Invalid username or password');
+        }
+    });
+});
+
 
 
 
