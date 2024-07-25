@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Registration - VC Lab</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#">Projects</a>
+                    <div class="dropdown-content">
+                        <a href="ongoing-projects.html">Ongoing Projects</a>
+                        <a href="completed-projects.html">Completed Projects</a>
+                        <a href="request-dataset.html">Request a Dataset</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Registration</a>
+                    <div class="dropdown-content">
+                        <a href="internship-registration.html">Internship Registration</a>
+                        <a href="training-registration.html">Training Registration</a>
+                        <a href="join-vc-team.html">Join VC Team</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Team</a>
+                    <div class="dropdown-content">
+                        <a href="faculty.html">Faculty</a>
+                        <a href="project-interns.html">Project Interns</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="training-registration-section">
+            <div class="training-info">
+                <h1>Why Train With Us</h1>
+                <p>At VC Lab, our training programs are designed to provide you with hands-on experience and practical knowledge in various cutting-edge technologies. Our expert trainers bring real-world insights and ensure a comprehensive learning experience.</p>
+
+                <h2>Programs Offered</h2>
+                <ul>
+                    <li><strong>Program 1:</strong> A brief description of the first training program offered.</li>
+                    <li><strong>Program 2:</strong> A brief description of the second training program offered.</li>
+                    <li><strong>Program 3:</strong> A brief description of the third training program offered.</li>
+                    <li><strong>Program 4:</strong> A brief description of the fourth training program offered.</li>
+                    <li><strong>Program 5:</strong> A brief description of the fifth training program offered.</li>
+                    <li><strong>Program 6:</strong> A brief description of the sixth training program offered.</li>
+                    <li><strong>Program 7:</strong> A brief description of the seventh training program offered.</li>
+                    <li><strong>Program 8:</strong> A brief description of the eighth training program offered.</li>
+                    <li><strong>Program 9:</strong> A brief description of the ninth training program offered.</li>
+                    <li><strong>Program 10:</strong> A brief description of the tenth training program offered.</li>
+                </ul>
+
+            </div>
+
+            <div class="training-registration-form">
+                <h2>Register for Training</h2>
+                <form action="submit_training.php" method="post" enctype="multipart/form-data">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="program">Program of Interest:</label>
+                    <input type="text" id="program" name="program" required>
+
+                    <label for="payment-link">Payment Receipt (PDF):</label>
+                    <p>For completing payment: <a href="https://www.dummylink.com" target="_blank">Payment link</a>.</p>
+                    <input type="file" id="payment" name="payment" accept=".pdf" required>
+
+                    <label for="comments">Comments (Optional):</label>
+                    <textarea id="comments" name="comments"></textarea>
+
+                    <button type="submit">Submit Registration</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Thank you for visiting</p>
+        <p>&copy; 2024 VC</p>
+    </footer>
+</body>
+</html>

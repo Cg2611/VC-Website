@@ -1,0 +1,835 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    background-color: rgb(0, 0, 0);
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.video-container {
+    height: calc(100vh - 56px); /* Adjust height to account for the navbar */
+    overflow: hidden;
+    margin-top: 56px; /* Adjust margin to account for the navbar height */
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f1f1f1;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+main {
+    padding: 80px 20px; /* Added padding to make space for fixed header */
+    flex: 1;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* General Styles for About Us Page */
+
+/* General Styles for About Us Page */
+
+.about-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-content {
+    line-height: 1.6;
+    color: #333;
+}
+
+.about-content h1 {
+    font-size: 2.8em; /* Larger size for main heading */
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.about-content h3 {
+    font-size: 2.2em; /* Slightly smaller size for subheadings */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #0056b3;
+}
+
+.about-content p,
+.about-content ul {
+    margin-bottom: 20px;
+}
+
+.about-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.about-content li {
+    margin-bottom: 10px;
+}
+
+.about-content a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.about-content a:hover {
+    text-decoration: underline;
+}
+
+
+/* Projects Section */
+.projects-section {
+    padding: 20px;
+}
+
+.projects-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.completed-projects, .ongoing-projects {
+    width: 45%;
+}
+
+.completed-projects h2, .ongoing-projects h2 {
+    margin-bottom: 10px;
+}
+
+.completed-projects ul, .ongoing-projects ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* Dataset Request */
+.dataset-request {
+    margin-top: 20px;
+}
+
+.dataset-request h2 {
+    margin-bottom: 10px;
+}
+
+.dataset-request form {
+    display: flex;
+    flex-direction: column;
+}
+
+.dataset-request label {
+    margin-top: 10px;
+}
+
+.dataset-request input, .dataset-request textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dataset-request button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dataset-request button:hover {
+    background-color: #555;
+}
+
+/* Login Section */
+.login-section {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.login-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-section input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-section button:hover {
+    background-color: #555;
+}
+
+/* Team Section */
+.team-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.team-section h1 {
+    margin-bottom: 20px;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.faculty-member {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.faculty-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.faculty-member h2 {
+    margin-bottom: 10px;
+}
+
+.faculty-member p {
+    margin-bottom: 5px;
+}
+
+/* Intern Section */
+.intern-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.intern-section h1 {
+    margin-bottom: 20px;
+}
+
+.intern-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.intern-member {
+    width: 200px;
+    margin: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.intern-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.intern-member h3 {
+    margin-bottom: 8px;
+}
+
+.intern-member p {
+    margin-bottom: 5px;
+}
+
+/* Registration Section */
+.registration-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.registration-section h1 {
+    margin-bottom: 20px;
+}
+
+.registration-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.registration-form {
+    width: 400px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.registration-form h2 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.registration-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.registration-form input,
+.registration-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.registration-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Ensure all forms align the same */
+.registration-container .registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-container .registration-form button {
+    margin-top: auto; /* Push button to the bottom of the form */
+}
+
+
+/* General Styles for Contact Us Page */
+/* General Styles for Contact Us Page */
+
+.contact-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.contact-info,
+.contact-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h2,
+.contact-form h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-info p,
+.contact-form label {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(9, 9, 10);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover > a {
+    background-color: #333;
+}
+
+
+/* Ongoing Projects Page Specific Styles */
+
+/* Ongoing Projects Section */
+.projects-section {
+    padding: 20px;
+}
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.project {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.project img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.project h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.project p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.project .description {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* General Styles for Internship Registration Page */
+.internship-registration-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.internship-intro {
+    margin-bottom: 40px;
+}
+
+.internship-intro h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.internship-intro h2 {
+    font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #0056b3;
+}
+
+.internship-intro p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.internship-intro ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.internship-intro li {
+    margin-bottom: 10px;
+}
+
+/* Registration Form Styling */
+.internship-registration-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.internship-registration-form h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.internship-registration-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.internship-registration-form input, 
+.internship-registration-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.internship-registration-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.internship-registration-form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* General Styles for Training Registration Page */
+.training-registration-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.training-info {
+    margin-bottom: 40px;
+}
+
+.training-info h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.training-info h2 {
+    font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #0056b3;
+}
+
+.training-info p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.training-info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.training-info li {
+    margin-bottom: 10px;
+}
+
+/* Registration Form Styling */
+.training-registration-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.training-registration-form h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.training-registration-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.training-registration-form input, 
+.training-registration-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.training-registration-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.training-registration-form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Additional CSS for Join VC Team Page */
+
+/* Join VC Team Section */
+.join-vc-team-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.vc-info,
+.vc-team-registration-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.vc-info h1,
+.vc-info h2,
+.vc-team-registration-form h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.vc-info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px; /* Added margin for spacing */
+}
+
+.vc-info ul li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.vc-info p,
+.vc-info h2 {
+    margin-top: 20px; /* Added margin for spacing */
+}
+
+.vc-team-registration-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.vc-team-registration-form input, 
+.vc-team-registration-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.vc-team-registration-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.vc-team-registration-form button:hover {
+    background-color: #0056b3;
+}
+
+.sponsors-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.sponsors-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sponsors-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sponsor {
+    text-align: center;
+    width: 150px;
+}
+
+.sponsor img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
