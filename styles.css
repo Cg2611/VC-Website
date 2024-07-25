@@ -15,15 +15,25 @@ header {
     z-index: 1000;
 }
 
+nav {
+    /* margin-left: 950px; */
+    /* padding-left: 950px; */
+    display: flex;
+    justify-content: flex-end;
+}
+
 nav ul {
     list-style-type: none;
     display: flex;
     justify-content: flex-end;
-    padding:  20px;
+    padding: 10px 20px;
+    background-color: rgb(9, 9, 10);
+
 }
 
 nav ul li {
     margin: 0 15px;
+    
 }
 
 nav ul li a {
@@ -44,4 +54,30 @@ nav ul li a {
     top: 0;
     left: 0;
     width: 100%;
+}
+
+/* .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+} */
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f1f1f1;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+main {
+    padding: 80px 20px; /* Added padding to make space for fixed header */
+}
+
+h1 {
+    margin-bottom: 20px;
 }
