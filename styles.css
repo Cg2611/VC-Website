@@ -546,4 +546,261 @@ h1 {
     color: #777;
 }
 
+/* General Styles for Internship Registration Page */
+.internship-registration-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.internship-intro {
+    margin-bottom: 40px;
+}
+
+.internship-intro h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.internship-intro h2 {
+    font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #0056b3;
+}
+
+.internship-intro p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.internship-intro ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.internship-intro li {
+    margin-bottom: 10px;
+}
+
+/* Registration Form Styling */
+.internship-registration-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.internship-registration-form h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.internship-registration-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.internship-registration-form input, 
+.internship-registration-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.internship-registration-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.internship-registration-form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* General Styles for Training Registration Page */
+.training-registration-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.training-info {
+    margin-bottom: 40px;
+}
+
+.training-info h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.training-info h2 {
+    font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #0056b3;
+}
+
+.training-info p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.training-info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.training-info li {
+    margin-bottom: 10px;
+}
+
+/* Registration Form Styling */
+.training-registration-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.training-registration-form h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.training-registration-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.training-registration-form input, 
+.training-registration-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.training-registration-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.training-registration-form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Additional CSS for Join VC Team Page */
+
+/* Join VC Team Section */
+.join-vc-team-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.vc-info,
+.vc-team-registration-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.vc-info h1,
+.vc-info h2,
+.vc-team-registration-form h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.vc-info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px; /* Added margin for spacing */
+}
+
+.vc-info ul li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.vc-info p,
+.vc-info h2 {
+    margin-top: 20px; /* Added margin for spacing */
+}
+
+.vc-team-registration-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.vc-team-registration-form input, 
+.vc-team-registration-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.vc-team-registration-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.vc-team-registration-form button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
 
