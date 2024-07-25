@@ -51,21 +51,13 @@
                 <ul>
                     <li><strong>Program 1:</strong> A brief description of the first training program offered.</li>
                     <li><strong>Program 2:</strong> A brief description of the second training program offered.</li>
-                    <li><strong>Program 3:</strong> A brief description of the third training program offered.</li>
-                    <li><strong>Program 4:</strong> A brief description of the fourth training program offered.</li>
-                    <li><strong>Program 5:</strong> A brief description of the fifth training program offered.</li>
-                    <li><strong>Program 6:</strong> A brief description of the sixth training program offered.</li>
-                    <li><strong>Program 7:</strong> A brief description of the seventh training program offered.</li>
-                    <li><strong>Program 8:</strong> A brief description of the eighth training program offered.</li>
-                    <li><strong>Program 9:</strong> A brief description of the ninth training program offered.</li>
-                    <li><strong>Program 10:</strong> A brief description of the tenth training program offered.</li>
+                    <!-- Add more programs as needed -->
                 </ul>
-
             </div>
 
             <div class="training-registration-form">
                 <h2>Register for Training</h2>
-                <form action="submit_training.php" method="post" enctype="multipart/form-data">
+                <form id="training-form">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
 
@@ -78,10 +70,10 @@
                     <label for="program">Program of Interest:</label>
                     <input type="text" id="program" name="program" required>
 
-                    <label for="payment-link">Payment Receipt (PDF):</label>
+                    <label for="payment-link">Payment Receipt (Google Drive Link):</label>
                     <p>For completing payment: <a href="https://www.dummylink.com" target="_blank">Payment link</a>.</p>
-                    <input type="file" id="payment" name="payment" accept=".pdf" required>
-
+                    <input type="text" id="payment" name="payment" placeholder="https://drive.google.com/" required pattern="https://.*">
+                
                     <label for="comments">Comments (Optional):</label>
                     <textarea id="comments" name="comments"></textarea>
 
@@ -95,5 +87,30 @@
         <p>Thank you for visiting</p>
         <p>&copy; 2024 VC</p>
     </footer>
+
+    <script>
+        document.getElementById('training-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+           
+            // Create FormData object to capture form data
+            const formData = new FormData(this);
+            console.log(formData)
+
+            // Send form data to the server
+            fetch('/submit-training', {
+    method: 'POST',
+    body: formData
+})
+.then(response => response.text())
+.then(data => {
+    alert(data); // Show server response
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('An error occurred. Please try again.');
+});
+
+        });
+    </script>
 </body>
 </html>

@@ -54,7 +54,7 @@
 
                 <div class="contact-form">
                     <h2>Send Us a Message</h2>
-                    <form action="submit_contact_form.php" method="post">
+                    <form id="contact-form" method="post">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
 
@@ -75,5 +75,33 @@
         <p>Thank you for visiting</p>
         <p>&copy; 2024 VC</p>
     </footer>
+    <script>
+       document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Create FormData object to capture form data
+    const formData = new FormData(this);
+
+    // Log FormData for debugging
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+
+    // Send form data to the server
+    fetch('/submit-contact-form', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // Show server response
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+});
+
+    </script>
 </body>
 </html>
