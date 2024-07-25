@@ -800,6 +800,35 @@ h1 {
     background-color: #0056b3;
 }
 
+.sponsors-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.sponsors-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sponsors-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sponsor {
+    text-align: center;
+    width: 150px;
+}
+
+.sponsor img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+
 
 
 
