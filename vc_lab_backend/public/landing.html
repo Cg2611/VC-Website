@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body id="landing-page">
+    <header id="header">
+        <h1>Dashboard</h1>
+    </header>
+    <main class="main-container">
+        <h1 id="welcome-message">
+            Welcome, <span id="username">[Username]</span>!
+        </h1>
+        <div class="date-filter">
+            <label for="start-date">Start Date: </label>
+            <input type="date" id="start-date">
+            <label for="end-date">End Date: </label>
+            <input type="date" id="end-date">
+            <button id="filter-button">Filter</button>
+        </div>
+        <div class="table-container">
+            <h2>Contact Us Entries</h2>
+            <table id="contact-us-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Entries will be dynamically inserted here -->
+                </tbody>
+            </table>
+            <div class="no-data" id="contact-us-no-data">No contact entries available.</div>
+        </div>
+
+        <div class="table-container">
+            <h2>Training Program Registrations</h2>
+            <table id="training-program-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Program</th>
+                        <th>Payment Link</th>
+                        <th>Comments</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Entries will be dynamically inserted here -->
+                </tbody>
+            </table>
+            <div class="no-data" id="training-program-no-data">No training registrations available.</div>
+        </div>
+
+        <div class="table-container">
+            <h2>Internship Registrations</h2>
+            <table id="internship-registration-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Internship Type</th>
+                        <th>Resume Link</th>
+                        <th>Additional Information</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Entries will be dynamically inserted here -->
+                </tbody>
+            </table>
+            <div class="no-data" id="internship-registration-no-data">No internship registrations available.</div>
+        </div>
+
+        <div class="table-container">
+            <h2>Join Us Applications</h2>
+            <table id="join-us-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Specialization</th>
+                        <th>Resume Link</th>
+                        <th>LinkedIn</th>
+                        <th>Scopus</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Entries will be dynamically inserted here -->
+                </tbody>
+            </table>
+            <div class="no-data" id="join-us-no-data">No join us applications available.</div>
+        </div>
+    </main>
+    <footer id="footer">
+        <p>&copy; 2024 VC. All rights reserved.</p>
+    </footer>
+    <script src="landing.js"></script>
+</body>
+</html>

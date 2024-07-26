@@ -34,7 +34,6 @@ db.connect(err => {
 app.post('/submit-internship', upload.none(), (req, res) => {
     const { name, email, phone, college, resume, additional_info } = req.body;
 
-    // Ensure that all fields are present
     if (!name || !email || !phone || !college || !resume) {
         return res.status(400).send('Missing required fields');
     }
@@ -67,11 +66,10 @@ app.post('/submit-training', upload.none(), (req, res) => {
     });
 });
 
-
+// Route to handle team application form submission
 app.post('/submit-team-application', upload.none(), (req, res) => {
     const { name, email, phone, specialization, linkedin, scopus, resumeLink } = req.body;
 
-    // Ensure that all required fields are present
     if (!name || !email || !phone || !specialization || !linkedin || !resumeLink) {
         return res.status(400).send('Missing required fields');
     }
@@ -86,15 +84,14 @@ app.post('/submit-team-application', upload.none(), (req, res) => {
     });
 });
 
+// Route to handle contact form submission
 app.post('/submit-contact-form', upload.none(), (req, res) => {
     const { name, email, message } = req.body;
 
-    // Ensure that all required fields are present
     if (!name || !email || !message) {
         return res.status(400).send('All fields are required');
     }
 
-    // SQL query to insert the data into the contact_us table
     const sql = 'INSERT INTO contact_us (name, email, message) VALUES (?, ?, ?)';
     db.query(sql, [name, email, message], (err, result) => {
         if (err) {
@@ -105,10 +102,10 @@ app.post('/submit-contact-form', upload.none(), (req, res) => {
     });
 });
 
+// Route to handle login
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    // Query to get the plain-text password from the database
     db.query('SELECT password FROM faculty WHERE username = ?', [username], (err, results) => {
         if (err) {
             console.error('Database error:', err);
@@ -118,29 +115,74 @@ app.post('/login', (req, res) => {
         if (results.length > 0) {
             const storedPassword = results[0].password;
 
-            // Compare the entered password with the stored password
             if (password === storedPassword) {
-                // Password matches, redirect to another page
-                res.redirect('/landing.html'); // Replace with your target page
+                res.redirect('/landing.html');
             } else {
-                // Password does not match
                 res.status(401).send('Invalid username or password');
             }
         } else {
-            // Username does not exist
             res.status(401).send('Invalid username or password');
         }
     });
 });
 
-
-
-
-
-
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes to fetch data
+app.get('/contact-us-data', (req, res) => {
+    let query = 'SELECT * FROM contact_us';
+    const params = [];
+    if (req.query.start_date && req.query.end_date) {
+        query += ' WHERE created_at BETWEEN ? AND ?';
+        params.push(req.query.start_date, req.query.end_date);
+    }
+    db.query(query, params, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
+});
+
+app.get('/training-data', (req, res) => {
+    let query = 'SELECT * FROM TrainingForm';
+    const params = [];
+    if (req.query.start_date && req.query.end_date) {
+        query += ' WHERE created_at BETWEEN ? AND ?';
+        params.push(req.query.start_date, req.query.end_date);
+    }
+    db.query(query, params, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
+});
+
+app.get('/internship-data', (req, res) => {
+    let query = 'SELECT * FROM InternshipForm';
+    const params = [];
+    if (req.query.start_date && req.query.end_date) {
+        query += ' WHERE created_at BETWEEN ? AND ?';
+        params.push(req.query.start_date, req.query.end_date);
+    }
+    db.query(query, params, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
+});
+
+app.get('/join-us-data', (req, res) => {
+    let query = 'SELECT * FROM JoinForm';
+    const params = [];
+    if (req.query.start_date && req.query.end_date) {
+        query += ' WHERE created_at BETWEEN ? AND ?';
+        params.push(req.query.start_date, req.query.end_date);
+    }
+    db.query(query, params, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
+});
+
+// Start the server
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Server running on http://localhost:${port}`);
 });

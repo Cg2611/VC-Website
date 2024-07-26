@@ -1,0 +1,111 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f9; /* Light grey background */
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+/* Header Styling */
+header {
+    background-color: #34113F; /* Bright blue header */
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Main Container */
+.main-container {
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard Heading */
+.dashboard-heading {
+    text-align: center;
+    color: #007bff; /* Blue color for heading */
+    margin-bottom: 1.5rem;
+}
+
+/* Date Filter Styling */
+.date-filter {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.date-filter label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.date-filter input {
+    margin-right: 1rem;
+}
+
+#filter-button {
+    padding: 0.5rem 1rem;
+    background-color: #34113F;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#filter-button:hover {
+    background-color: #6e44a3;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+table th {
+    background-color: #BEB7DF; /* Blue background for table headers */
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light grey background for even rows */
+}
+
+table tr:hover {
+    background-color: #e9ecef; /* Light grey background on hover */
+}
+
+/* Table Title Styling */
+.table-title {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #34113F; /* Bright blue footer */
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
