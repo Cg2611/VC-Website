@@ -229,7 +229,7 @@ app.post('/send-mail', upload.none(), async (req, res) => {
         service: 'gmail',
         auth: {
             user: 'chaithanyaprojects1309@gmail.com',
-            pass: 'kotd aeoi krlf knel',
+            pass: 
         },
     });
 
