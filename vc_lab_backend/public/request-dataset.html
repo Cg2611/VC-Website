@@ -43,7 +43,7 @@
     <main>
         <section class="dataset-request">
             <h1>Request a Dataset</h1>
-            <form action="submit_request.php" method="post">
+            <form id="dataset-request-form" action="/submit_request" method="post">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
 
@@ -66,5 +66,27 @@
     <footer>
         <p>&copy; 2024 VC</p>
     </footer>
+    <script>
+        document.getElementById('dataset-request-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Capture the form data
+            const formData = new FormData(event.target);
+
+            // Send the form data to the server
+            fetch('/submit_request', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data); // Show the server response
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>

@@ -182,6 +182,22 @@ app.get('/join-us-data', (req, res) => {
     });
 });
 
+app.post('/submit_request', upload.none(), (req, res) => {
+    const { name, email, project, description, dataset } = req.body;
+
+    if (!name || !email || !project || !description || !dataset) {
+        return res.status(400).send('Missing required fields');
+    }
+
+    const query = 'INSERT INTO dataset_requests (name, email, project, description, dataset) VALUES (?, ?, ?, ?, ?)';
+    db.query(query, [name, email, project, description, dataset], (err, result) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send('An error occurred while submitting the request.');
+        }
+        res.send('Request submitted successfully');
+    });
+});
 // Start the server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
