@@ -122,6 +122,46 @@
             </table>
             <div class="no-data" id="dataset-request-no-data">No dataset requests available.</div>
         </div>
+
+        <div class="mail-section">
+            <h2>Send an Email</h2>
+            <form id="mailForm">
+                <label for="to">To:</label>
+                <input type="email" id="to" name="to" required>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <div id="status"></div>
+        </div>
+    
+        <script>
+            document.getElementById('mailForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const to = document.getElementById('to').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+    
+                const response = await fetch('/send-mail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ to, subject, message }),
+                });
+    
+                const statusDiv = document.getElementById('status');
+                if (response.ok) {
+                    statusDiv.textContent = 'Email sent successfully!';
+                    statusDiv.style.color = 'green';
+                } else {
+                    statusDiv.textContent = 'Failed to send email.';
+                    statusDiv.style.color = 'red';
+                }
+            });
+        </script>
     </main>
     <footer id="footer">
         <p>&copy; 2024 VC. All rights reserved.</p>

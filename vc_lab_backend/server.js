@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const multer = require('multer');
 const path = require('path');
+const nodemailer = require('nodemailer'); // Add Nodemailer
 
 const app = express();
 const port = 3000;
@@ -182,7 +183,6 @@ app.get('/join-us-data', (req, res) => {
     });
 });
 
-
 app.post('/submit_request', upload.none(), (req, res) => {
     const { name, email, project, description, dataset } = req.body;
 
@@ -199,6 +199,7 @@ app.post('/submit_request', upload.none(), (req, res) => {
         res.send('Request submitted successfully');
     });
 });
+
 app.get('/dataset-request-data', (req, res) => {
     let query = 'SELECT * FROM dataset_requests';
     const params = [];
@@ -213,6 +214,41 @@ app.get('/dataset-request-data', (req, res) => {
         }
         res.json(results);
     });
+});
+
+// Route to handle email sending
+app.post('/send-mail', upload.none(), async (req, res) => {
+    const { to, subject, message } = req.body;
+
+    if (!to || !subject || !message) {
+        return res.status(400).send('All fields are required');
+    }
+
+    // Create a transporter
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'chaithanyaprojects1309@gmail.com',
+            pass: 'kotd aeoi krlf knel',
+        },
+    });
+
+    // Set up email data
+    let mailOptions = {
+        from: 'chaithanyaprojects1309@gmail.com',
+        to: to,
+        subject: subject,
+        text: message,
+    };
+
+    try {
+        // Send mail
+        await transporter.sendMail(mailOptions);
+        res.send('Email sent successfully');
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).send('Failed to send email');
+    }
 });
 
 // Start the server
