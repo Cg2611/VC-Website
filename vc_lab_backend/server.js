@@ -182,6 +182,7 @@ app.get('/join-us-data', (req, res) => {
     });
 });
 
+
 app.post('/submit_request', upload.none(), (req, res) => {
     const { name, email, project, description, dataset } = req.body;
 
@@ -198,6 +199,22 @@ app.post('/submit_request', upload.none(), (req, res) => {
         res.send('Request submitted successfully');
     });
 });
+app.get('/dataset-request-data', (req, res) => {
+    let query = 'SELECT * FROM dataset_requests';
+    const params = [];
+    if (req.query.start_date && req.query.end_date) {
+        query += ' WHERE created_at BETWEEN ? AND ?';
+        params.push(req.query.start_date, req.query.end_date);
+    }
+    db.query(query, params, (error, results) => {
+        if (error) {
+            console.error('Error fetching dataset request data:', error);
+            return res.status(500).send('Server error');
+        }
+        res.json(results);
+    });
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);

@@ -16,6 +16,38 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchTrainingEntries(startDate, endDate);
         fetchInternshipEntries(startDate, endDate);
         fetchJoinUsEntries(startDate, endDate);
+        fetchDatasetRequestEntries(startDate, endDate);
+    }
+
+    function fetchDatasetRequestEntries(startDate, endDate) {
+        fetch(`/dataset-request-data?start_date=${startDate}&end_date=${endDate}`)
+            .then(response => {
+                console.log('Fetching dataset request data:', response);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Dataset request data received:', data);
+                const tableBody = document.querySelector('#dataset-request-table tbody');
+                tableBody.innerHTML = '';
+                if (data.length > 0) {
+                    data.forEach(row => {
+                        tableBody.innerHTML += `
+                            <tr>
+                                <td>${row.name || ''}</td>
+                                <td>${row.email || ''}</td>
+                                <td>${row.project || ''}</td>
+                                <td>${row.description || ''}</td>
+                                <td>${row.dataset || ''}</td>
+                                <td>${row.created_at || ''}</td>
+                            </tr>
+                        `;
+                    });
+                    document.querySelector('#dataset-request-no-data').style.display = 'none';
+                } else {
+                    document.querySelector('#dataset-request-no-data').style.display = 'block';
+                }
+            })
+            .catch(error => console.error('Error fetching dataset request data:', error));
     }
 
     function fetchContactUsEntries(startDate, endDate) {
