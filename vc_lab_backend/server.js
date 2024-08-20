@@ -14,13 +14,20 @@ const upload = multer();
 // Middleware for parsing JSON and urlencoded form data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+const session = require('express-session');
 
+app.use(session({
+    secret: 'your_secret_key', // replace with your own secret
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // use 'true' if using HTTPS
+}));
 // Set up MySQL connection
 const db = mysql.createConnection({
-    host: "127.0.0.1",
+    host: '127.0.0.1',
     port: 3306,
-    user: "root",
-    password: "root",
+    user: 'root',
+    password: 'root',
     database: 'vc_lab'
 });
 
@@ -228,14 +235,14 @@ app.post('/send-mail', upload.none(), async (req, res) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'chaithanyaprojects1309@gmail.com',
-            pass: 
+            user: 'onlytechzie@gmail.com',
+            pass: 'monutantech@2003',
         },
     });
 
     // Set up email data
     let mailOptions = {
-        from: 'chaithanyaprojects1309@gmail.com',
+        from: 'onlytechzie@gmail.com',
         to: to,
         subject: subject,
         text: message,
@@ -250,8 +257,83 @@ app.post('/send-mail', upload.none(), async (req, res) => {
         res.status(500).send('Failed to send email');
     }
 });
+// Endpoint to get ongoing projects
+// API to get ongoing projects
+// Route to fetch all ongoing projects without images
+app.get('/ongoing-projects', (req, res) => {
+    const query = 'SELECT id, project_name, mentor_name, sponsor_name, description FROM ongoingprojects';
+    
+    db.query(query, (error, results) => {
+        if (error) {
+            console.error('Error fetching projects:', error);
+            res.status(500).send('Failed to fetch projects');
+            return;
+        }
+        res.json(results);
+    });
+});
 
+// Route to serve image by project ID
+app.get('/project-image/:id', (req, res) => {
+    const projectId = req.params.id;
+
+    const query = 'SELECT image_url FROM ongoingprojects WHERE id = ?';
+
+    db.query(query, [projectId], (error, result) => {
+        if (error) {
+            console.error('Error fetching image:', error);
+            res.status(500).send('Failed to fetch image');
+            return;
+        }
+
+        if (result.length > 0) {
+            res.writeHead(200, {'Content-Type': 'image/jpeg'});
+            res.end(result[0].image_url);  // Send the image blob
+        } else {
+            res.status(404).send('Image not found');
+        }
+    });
+});
+
+
+
+
+// Handle form submission to add a new project
+app.post('/add-project', upload.single('image_url'), (req, res) => {
+    const { project_name, mentor_name, sponsor_name, description } = req.body;
+    const imageUrl = req.file.buffer; // Get the uploaded image as a buffer
+
+    const query = `
+        INSERT INTO ongoingprojects (project_name, mentor_name, sponsor_name, description, image_url)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    db.query(query, [project_name, mentor_name, sponsor_name, description, imageUrl], (err, result) => {
+        if (err) {
+            console.error('Error inserting project:', err);
+            res.status(500).send('Failed to add project');
+            return;
+        }
+        res.status(200).send('Project added successfully');
+    });
+});
+// Logout route
+
+
+app.get('/logout', (req, res) => {
+    // Destroy the session
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error during logout:', err);
+            res.status(500).send('Failed to log out');
+            return;
+        }
+        // Redirect to the index.html page
+        res.redirect('/index.html');
+    });
+});
 // Start the server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
+
