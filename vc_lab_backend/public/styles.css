@@ -37,6 +37,33 @@ nav ul li a {
     color: #ffffff;
     font-weight: bold;
 }
+/* Navbar styling */
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    text-align: center;
+}
+
+.navbar li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    background-color: #111;
+}
 
 .video-container {
     height: calc(100vh - 56px); /* Adjust height to account for the navbar */
@@ -828,6 +855,104 @@ h1 {
     margin-bottom: 10px;
 }
 
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.project {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px; /* Adjust width as needed */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+}
+
+.project h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.project .description {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* General form styling */
+.add-project-section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-project-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#add-project-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#add-project-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+#add-project-form input[type="text"],
+#add-project-form input[type="file"],
+#add-project-form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#add-project-form textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+#add-project-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#add-project-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .add-project-section {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    #add-project-form {
+        flex-direction: column;
+    }
+}
 
 
 
