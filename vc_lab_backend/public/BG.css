@@ -1,0 +1,13 @@
+body {
+    background-image: url('images/BG.png');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; 
+    overflow: auto;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: auto; /* Ensure scrolling is enabled */
+}
