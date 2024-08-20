@@ -43,89 +43,36 @@
     <main>
         <section class="projects-section">
             <h1>Ongoing Projects</h1>
-            <div class="projects-container">
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 1">
-                    <h2>Project Name 1</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 1</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 1</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto temporibus esse impedit nam sed quidem corporis ut, eveniet dolorum dolore, aliquam ea quod sequi cum! Ut tempore accusamus repellat autem.</p>
-                </div>
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 2">
-                    <h2>Project Name 2</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 2</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 2</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet nam temporibus nisi explicabo, porro ex recusandae blanditiis nobis quidem! Unde fugit tempora ipsum nobis perferendis libero cumque debitis expedita?.</p>
-                </div>
-
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 2">
-                    <h2>Project Name 2</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 2</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 2</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet nam temporibus nisi explicabo, porro ex recusandae blanditiis nobis quidem! Unde fugit tempora ipsum nobis perferendis libero cumque debitis expedita?.</p>
-                </div>
-
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 2">
-                    <h2>Project Name 2</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 2</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 2</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet nam temporibus nisi explicabo, porro ex recusandae blanditiis nobis quidem! Unde fugit tempora ipsum nobis perferendis libero cumque debitis expedita?.</p>
-                </div>
-
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 2">
-                    <h2>Project Name 2</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 2</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 2</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet nam temporibus nisi explicabo, porro ex recusandae blanditiis nobis quidem! Unde fugit tempora ipsum nobis perferendis libero cumque debitis expedita?.</p>
-                </div>
-
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 2">
-                    <h2>Project Name 2</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 2</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 2</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet nam temporibus nisi explicabo, porro ex recusandae blanditiis nobis quidem! Unde fugit tempora ipsum nobis perferendis libero cumque debitis expedita?.</p>
-                </div>
-
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 2">
-                    <h2>Project Name 2</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 2</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 2</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet nam temporibus nisi explicabo, porro ex recusandae blanditiis nobis quidem! Unde fugit tempora ipsum nobis perferendis libero cumque debitis expedita?.</p>
-                </div>
-
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 2">
-                    <h2>Project Name 2</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 2</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 2</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet nam temporibus nisi explicabo, porro ex recusandae blanditiis nobis quidem! Unde fugit tempora ipsum nobis perferendis libero cumque debitis expedita?.</p>
-                </div>
-
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 2">
-                    <h2>Project Name 2</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 2</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 2</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet nam temporibus nisi explicabo, porro ex recusandae blanditiis nobis quidem! Unde fugit tempora ipsum nobis perferendis libero cumque debitis expedita?.</p>
-                </div>
-
-                <div class="project">
-                    <img src="images/project.jpg" alt="Project 2">
-                    <h2>Project Name 2</h2>
-                    <p><strong>Mentor:</strong> Mentor Name 2</p>
-                    <p><strong>Sponsor:</strong> Sponsor Name 2</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet nam temporibus nisi explicabo, porro ex recusandae blanditiis nobis quidem! Unde fugit tempora ipsum nobis perferendis libero cumque debitis expedita?.</p>
-                </div>
-                <!-- Repeat for 8 more projects -->
+            <div class="projects-container" id="projects-container">
+                <!-- Projects will be dynamically inserted here -->
             </div>
         </section>
     </main>
+    <script>
+fetch('/ongoing-projects')
+    .then(response => response.json())
+    .then(data => {
+        const container = document.getElementById('projects-container');
+        data.forEach(project => {
+            const projectElement = document.createElement('div');
+            projectElement.classList.add('project');
+            
+            // Generate the image URL using the project ID
+            const imageUrl = `/project-image/${project.id}`;
+            
+            projectElement.innerHTML = `
+                <img src="${imageUrl}" alt="${project.project_name}" />
+                <h2>${project.project_name}</h2>
+                <p><strong>Mentor:</strong> ${project.mentor_name}</p>
+                <p><strong>Sponsor:</strong> ${project.sponsor_name}</p>
+                <p class="description">${project.description}</p>
+            `;
+            
+            container.appendChild(projectElement);
+        });
+    })
+    .catch(error => console.error('Error fetching ongoing projects:', error));
+    </script>
 
     <footer>
         <p>&copy; 2024 VC</p>
