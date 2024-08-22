@@ -1,0 +1,54 @@
+
+
+
+ /* General Header Styles */
+ #header {
+    background-color:rgba(19, 77, 143, 0.676); /* Dark background for header */
+    color: #fff; /* White text color */
+    padding: 15px 20px; /* Padding around the header */
+    display: flex; /* Flexbox for aligning items */
+    justify-content: space-between; /* Space between header elements */
+    align-items: center; /* Center items vertically */
+    position: relative;
+}
+
+/* Navbar Styles */
+.navbar {
+    list-style-type: none; /* Remove default list styling */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Flexbox for horizontal layout */
+}
+
+.navbar li {
+    margin: 0 15px; /* Space between items */
+}
+
+.navbar a {
+    color: #fff; /* White text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Font size */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navbar a:hover {
+    color: #f39c12; /* Highlight color on hover */
+    border-bottom: 2px solid #f39c12; /* Underline effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #header {
+        flex-direction: column; /* Stack header elements vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack navbar items vertically */
+        width: 100%; /* Full width for the navbar */
+    }
+
+    .navbar li {
+        margin: 10px 0; /* Space between items in vertical layout */
+    }
+}

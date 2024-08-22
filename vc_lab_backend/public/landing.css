@@ -1,16 +1,16 @@
-/* General Body Styling */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
-    background-color: #f4f4f9; /* Light grey background */
-    overflow-y: auto; /* Allow vertical scrolling */
+    background-color: #f4f4f9; 
+    overflow-y: auto; 
 }
 
-/* Header Styling */
+
 header {
-    background-color: #34113F; /* Bright blue header */
+    background-color: #34113F; 
     color: white;
     padding: 1rem 2rem;
     text-align: center;
@@ -20,7 +20,6 @@ header h1 {
     margin: 0;
 }
 
-/* Main Container */
 .main-container {
     margin: 2rem auto;
     padding: 2rem;
@@ -30,14 +29,14 @@ header h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Dashboard Heading */
+
 .dashboard-heading {
     text-align: center;
-    color: #007bff; /* Blue color for heading */
+    color: #007bff; 
     margin-bottom: 1.5rem;
 }
 
-/* Date Filter Styling */
+
 .date-filter {
     text-align: center;
     margin-bottom: 2rem;
@@ -65,7 +64,7 @@ header h1 {
     background-color: #6e44a3;
 }
 
-/* Table Styling */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -79,19 +78,19 @@ table th, table td {
 }
 
 table th {
-    background-color: #BEB7DF; /* Blue background for table headers */
+    background-color: #BEB7DF;
     color: white;
 }
 
 table tr:nth-child(even) {
-    background-color: #f9f9f9; /* Light grey background for even rows */
+    background-color: #f9f9f9; 
 }
 
 table tr:hover {
-    background-color: #e9ecef; /* Light grey background on hover */
+    background-color: #e9ecef; 
 }
 
-/* Table Title Styling */
+
 .table-title {
     font-size: 1.25rem;
     color: #333;
@@ -99,13 +98,13 @@ table tr:hover {
     font-weight: bold;
 }
 
-/* Footer Styling */
+
 footer {
     text-align: center;
     padding: 1rem;
-    background-color: #34113F; /* Bright blue footer */
+    background-color:rgba(19, 77, 143, 0.676);
     color: white;
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
 }
@@ -174,3 +173,55 @@ footer {
     text-align: center;
 }
 
+
+
+ /* General Header Styles */
+#header {
+    background-color:rgba(19, 77, 143, 0.676); /* Dark background for header */
+    color: #fff; /* White text color */
+    padding: 15px 20px; /* Padding around the header */
+    display: flex; /* Flexbox for aligning items */
+    justify-content: space-between; /* Space between header elements */
+    align-items: center; /* Center items vertically */
+}
+
+/* Navbar Styles */
+.navbar {
+    list-style-type: none; /* Remove default list styling */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Flexbox for horizontal layout */
+}
+
+.navbar li {
+    margin: 0 15px; /* Space between items */
+}
+
+.navbar a {
+    color: #fff; /* White text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Font size */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navbar a:hover {
+    color: #f39c12; /* Highlight color on hover */
+    border-bottom: 2px solid #f39c12; /* Underline effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #header {
+        flex-direction: column; /* Stack header elements vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack navbar items vertically */
+        width: 100%; /* Full width for the navbar */
+    }
+
+    .navbar li {
+        margin: 10px 0; /* Space between items in vertical layout */
+    }
+}

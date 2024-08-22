@@ -27,7 +27,7 @@ const db = mysql.createConnection({
     host: '127.0.0.1',
     port: 3306,
     user: 'root',
-    password: 'root',
+    password: 'Aneesh@60',
     database: 'vc_lab'
 });
 
@@ -318,6 +318,25 @@ app.post('/add-project', upload.single('image_url'), (req, res) => {
     });
 });
 // Logout route
+
+// Route to handle project deletion
+app.delete('/faculty-ongoing-projects/:id', (req, res) => {
+    const projectId = req.params.id;
+    console.log(`Attempting to delete project with ID: ${projectId}`);
+    
+    // Use ? placeholder for MySQL
+    const deleteQuery = 'DELETE FROM ongoingprojects WHERE id = ?';
+    db.query(deleteQuery, [projectId], (error, results) => {
+        if (error) {
+            console.error('Error deleting project:', error);
+            res.status(500).send('Error deleting project.');
+        } else {
+            res.status(200).send('Project deleted successfully!');
+        }
+    });
+});
+
+
 
 
 app.get('/logout', (req, res) => {
