@@ -6,6 +6,68 @@
     <title>VC Lab - Interns</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="BG.css">
+    <style>
+            /* Styling for intern member cards */
+    .intern-member {
+        width: 300px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px; /* Space between cards */
+    }
+
+    .intern-member img {
+        width: 70%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .intern-member h2 {
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
+
+    .intern-member p {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+
+
+    #intern-container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+    }
+    
+    html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1; /* This makes the main content area take up the remaining space */
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -45,42 +107,37 @@
     <main>
         <section class="intern-section">
             <h1>Interning Students</h1>
-            <div class="intern-container">
-                <!-- Intern 1 -->
-                <div class="intern-member">
-                    <img src="images/adiga.jpeg" alt="Intern Student">
-                    <h3>Aneesh Adiga S
-                    </h3>
-                    <p>Email: aneeshadigas.is21@rvce.edu.in</p>
-                    <p>Project: Project Bat</p>
-                </div>
-                <!-- Intern 2 -->
-                <div class="intern-member">
-                    <img src="images/cg.jpeg" alt="Intern Student">
-                    <h3>Chaithanya Ganesh</h3>
-                    <p>Email: chaithanyag.is21@rvce.edu.in</p>
-                    <p>Project: Project Website</p>
-                </div>
-                <!-- Add 14 more intern members here -->
-                <!-- Intern 3 -->
-                <div class="intern-member">
-                    <img src="images/abhin.png" alt="Intern Student">
-                    <h3>Abhin Divakar</h3>
-                    <p>Email: abhindvk.is21@rvce.edu.in</p>
-                    <p>Project: Project Website</p>
-                </div>
-                <!-- Intern 4 -->
-                <div class="intern-member">
-                    <img src="images/Vinay.jpeg" alt="Intern Student">
-                    <h3>Vinay Kumar</h3>
-                    <p>Email: vinaykumard.is21@rvce.edu.in</p>
-                    <p>Project: Project Bat</p>
-                </div>
-                
+            <div id="intern-container">
+                <!-- Intern members will be dynamically inserted here -->
             </div>
         </section>
     </main>
+    <script>
+        fetch('/interns')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('intern-container');
+                data.forEach(intern => {
+                    const internElement = document.createElement('div');
+                    internElement.classList.add('intern-member');
 
+                    const imageUrl = `/intern-image/${intern.id}`;
+
+                    internElement.innerHTML = `
+                        <img src="${imageUrl}" alt="${intern.name}" />
+                        <h2>${intern.name}</h2>
+                        <p>Email: ${intern.email}</p>
+                        <p>Project: ${intern.project}</p>
+                    `;
+
+                    container.appendChild(internElement);
+                });
+
+            })
+            .catch(error => console.error('Error fetching interns:', error));
+
+
+    </script>
     <footer>
         <p>&copy; 2024 VC</p>
     </footer>

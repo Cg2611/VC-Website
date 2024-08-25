@@ -6,6 +6,49 @@
     <title>VC Lab - Faculty</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="BG.css">
+    <style>
+        /* Styling for faculty member cards */
+.faculty-member {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Space between cards */
+}
+
+.faculty-member img {
+    width: 70%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+        .faculty-member h2 {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        .faculty-member p {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+
+
+        #faculty-container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -44,69 +87,39 @@
 
     <main>
         <section class="team-section">
-            <h1>Our Faculty</h1>
-            <div class="team-container">
-                <!-- Faculty Member 1 -->
-                <div class="faculty-member">
-                    <img src="images/anala.jpg" alt="Faculty Member">
-                    <h2>Dr. Anala M R</h2>
-                    <p>Email: analamr@rvce.edu.in</p>
-                    <p>Specialization: Professor, Dept. of ISE</p>
-                </div>
-                <!-- Faculty Member 2 -->
-                <div class="faculty-member">
-                    <img src="images/nagashree.jpg" alt="Faculty Member">
-                    <h2>Dr. Nagashree N Rao</h2>
-                    <p>Email: nagashreenrao@rvce.edu.in</p>
-                    <p>Specialization: Associate Professor, Dept. of BT</p>
-                </div>
-                <!-- Faculty Member 3 -->
-                <div class="faculty-member">
-                    <img src="images/soumya.jpg" alt="Faculty Member">
-                    <h2>Dr. Soumya A</h2>
-                    <p>Email: soumyaa@rvce.edu.in</p>
-                    <p>Specialization: Associate Professor, Dept. of CSE</p>
-                </div>
-                <!-- Faculty Member 4 -->
-                <div class="faculty-member">
-                    <img src="images/Kavitha.jpeg" alt="Faculty Member">
-                    <h2>Dr. Kavitha S N</h2>
-                    <p>Email:kavithasn@rvce.edu.in</p>
-                    <p>Specialization: Assistant Professor, Dept. of ISE</p>
-                </div>
-                <!-- Faculty Member 5 -->
-                <div class="faculty-member">
-                    <img src="images/Merin.jpeg" alt="Faculty Member">
-                    <h2>Prof. Merin Meleet</h2>
-                    <p>Email: merinmeleet@rvce.edu.in</p>
-                    <p>Specialization: Assistant Professor, Dept. of ISE</p>
-                </div>
-                <!-- Faculty Member 6 -->
-                <div class="faculty-member">
-                    <img src="images/Veena.jpeg" alt="Faculty Member">
-                    <h2>Dr. Veena Divya K</h2>
-                    <p>Email: veenadivyak@rvce.edu.in</p>
-                    <p>Specialization: Assistant Professor, Dept. of EIE</p>
-                </div>
-                <!-- Faculty Member 7 -->
-                <div class="faculty-member">
-                    <img src="images/gajalaxmi.jpg" alt="Faculty Member">
-                    <h2>Dr. K Gajalakshmi</h2>
-                    <p>Email: 	
-                        gajalakshmik@rvce.edu.in</p>
-                    <p>Specialization: Assistant Professor, Dept. of CV</p>
-                </div>
-                <!-- Faculty Member 8 -->
-                <div class="faculty-member">
-                    <img src="images/mamatha.jpeg" alt="Faculty Member">
-                    <h2>Dr. Mamatha V</h2>
-                    <p>Email: mamthav@rvce.edu.in</p>
-                    <p>Specialization: Assistant Professor, Dept. of ME</p>
-                </div>
+            <h1 style="width: 150px; margin: auto; padding: 20px 5px;">Our Faculty</h1>
+            <div id="faculty-container">
+                <!-- Faculty members will be dynamically inserted here -->
             </div>
         </section>
     </main>
+    <script>
+        fetch('/faculty')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('faculty-container');
+                data.forEach(member => {
+                    const facultyElement = document.createElement('div');
+                    facultyElement.classList.add('faculty-member');
 
+                    const imageUrl = `/faculty-image/${member.id}`;
+
+                    facultyElement.innerHTML = `
+                        <img src="${imageUrl}" alt="${member.name}" />
+                        <h2>${member.name}</h2>
+                        <p>Email: ${member.email}</p>
+                        <p>Specialization: ${member.specialization}</p>
+                    `;
+
+                    container.appendChild(facultyElement);
+                });
+
+
+            })
+            .catch(error => console.error('Error fetching faculty members:', error));
+
+
+    </script>
     <footer>
         <p>&copy; 2024 VC</p>
     </footer>

@@ -6,17 +6,52 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="landing.css">
     <link rel="stylesheet" href="BG.css">
+    <style>
+                html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1; /* This makes the main content area take up the remaining space */
+        }
+
+        footer {
+            background-color:rgba(19, 77, 143, 0.676);
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+        /* Dropdown container - needed to position the dropdown content */
+
+
+/* Show the dropdown menu on hover */
+
+    </style>
 </head>
 <body id="landing-page">
     <header id="header">
         <h1>Dashboard</h1>
         <nav>
             <ul class="navbar">
-                <li><a href="faculty-ongoing-projects.html">Ongoing Projects</a></li>
-                <li><a href="faculty-completed-projects.html">Completed Projects</a></li>
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="faculty-manage.html">Faculty</a></li>
+                <li><a href="faculty-training.html">Project Interns</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Projects</a>
+                    <div class="dropdown-content">
+                        <a href="faculty-ongoing-projects.html">Ongoing Projects</a>
+                        <a href="faculty-completed-projects.html">Completed Projects</a>
+                    </div>
+                </li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
+        
     </header>
     <main class="main-container">
         <h1 id="welcome-message">

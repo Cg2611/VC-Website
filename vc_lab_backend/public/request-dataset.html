@@ -6,6 +6,64 @@
     <title>Request a Dataset - Center of Excellence Visual Computing RVCE</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="BG.css">
+    <style>
+        /* Styling the dataset request form */
+        #dataset-request-form {
+            background-color: #f4f4f4; /* Light grey background */
+            padding: 20px; /* Space inside the form */
+            max-width: 600px; /* Maximum width of the form */
+            margin: 20px auto; /* Center the form with margin at the top and bottom */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* Styling labels */
+        #dataset-request-form label {
+            display: block; /* Ensure labels appear on their own line */
+            margin-bottom: 8px; /* Space below labels */
+            font-weight: bold; /* Bold labels */
+        }
+
+        /* Styling text input and textarea */
+        #dataset-request-form input[type="text"],
+        #dataset-request-form input[type="email"],
+        #dataset-request-form textarea {
+            width: 100%; /* Full width input fields */
+            padding: 12px; /* Space inside input fields */
+            margin-bottom: 16px; /* Space below input fields */
+            border: 1px solid #ddd; /* Light border */
+            border-radius: 5px; /* Rounded corners */
+            box-sizing: border-box; /* Include padding and border in the element's width and height */
+            font-size: 16px; /* Increase font size for readability */
+        }
+
+        /* Styling textarea specifically */
+        #dataset-request-form textarea {
+            resize: vertical; /* Allow vertical resizing */
+            min-height: 100px; /* Minimum height for textarea */
+        }
+
+        /* Styling submit button */
+        #dataset-request-form button {
+            background-color: #007bff; /* Primary blue color */
+            color: white; /* White text */
+            padding: 12px 20px; /* Padding inside button */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 18px; /* Increase font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth transition effect */
+            display: block; /* Button takes up full width */
+            width: 100%; /* Full width button */
+        }
+
+        /* Button hover effect */
+        #dataset-request-form button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+
+        /* Footer and navbar colors remain unchanged as per your preference */
+    </style>
 </head>
 <body>
     <header>
@@ -43,7 +101,7 @@
     </header>
     <main>
         <section class="dataset-request">
-            <h1>Request a Dataset</h1>
+            <h1 style="width: 215px; margin: auto;">Request a Dataset</h1>
             <form id="dataset-request-form" action="/submit_request" method="post">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>

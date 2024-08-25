@@ -1,122 +1,118 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ongoing Projects</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="BG.css">
-    <link rel="stylesheet" href="landing.css">
-</head>
-<body id="landing-page">
-    <header id="header">
-        <h1>Dashboard</h1>
-        <nav>
-            <ul class="navbar">
-                <li><a href="faculty-ongoing-projects.html">Ongoing Projects</a></li>
-                <li><a href="faculty-completed-projects.html">Completed Projects</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="projects-section">
-            <h1>Ongoing Projects</h1>
-            <div id="projects-container" style="width: 90%; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px;">
-                <!-- Projects will be dynamically inserted here -->
-            <!-- </div>
-        </section>
-        <section class="add-project-section">
-            <h2>Add New Project</h2>
-            <form id="add-project-form" enctype="multipart/form-data">
-                <label for="project-name">Project Name:</label>
-                <input type="text" id="project-name" name="project_name" required>
-            
-                <label for="mentor-name">Mentor Name:</label>
-                <input type="text" id="mentor-name" name="mentor_name" required>
-            
-                <label for="sponsor-name">Sponsor Name:</label>
-                <input type="text" id="sponsor-name" name="sponsor_name" required>
-            
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" required></textarea>
-            
-                <label for="image-url">Upload Image:</label>
-                <input type="file" id="image-url" name="image_url" accept="image/*" required>
-            
-                <button type="submit">Add Project</button>
-            </form>
-            
-        </section>
-    </main>
-
-    <script>
-        // Fetch ongoing projects from the server and display them
-// Fetch ongoing projects from the server and display them
-fetch('/ongoing-projects')
-    .then(response => response.json())
-    .then(data => {
-        const container = document.getElementById('projects-container');
-        data.forEach(project => {
-            const projectElement = document.createElement('div');
-            projectElement.classList.add('project');
-            
-            // Generate the image URL using the project ID
-            const imageUrl = `/project-image/${project.id}`;
-            
-            projectElement.innerHTML = `
-                <img src="${imageUrl}" alt="${project.project_name}" />
-                <h2>${project.project_name}</h2>
-                <p><strong>Mentor:</strong> ${project.mentor_name}</p>
-                <p><strong>Sponsor:</strong> ${project.sponsor_name}</p>
-                <p class="description">${project.description}</p>
-            `;
-            
-            container.appendChild(projectElement);
-        });
-    })
-    .catch(error => console.error('Error fetching ongoing projects:', error));
-
-        // Handle form submission to add a new project
-        document.getElementById('add-project-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(this);
-
-            fetch('/add-project', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Project added successfully!');
-                    location.reload(); // Reload the page to show the new project
-                } else {
-                    throw new Error('Error adding project.');
-                }
-            })
-            .catch(error => console.error('Error adding project:', error));
-        });
-        
-    </script>
-
-    <footer>
-        <p>&copy; 2024 VC</p>
-    </footer>
-</body>
-</html>  -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ongoing Projects</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="BG.css">
     <link rel="stylesheet" href="landing.css">
-    <link rel="stylesheet" href="faculty-ongoing-project.css">
+    <!-- <link rel="stylesheet" href="faculty-ongoing-project.css"> -->
+    <style>
+/* Existing project styles */
+/* Existing project styles */
+.project {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.project h2 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.project p {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.completed-button, .delete-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.completed-button {
+    background-color: green;
+}
+
+.delete-button {
+    background-color: red;
+}
+
+#projects-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+}
+
+/* Updated Form Styling */
+#add-project-form {
+    background-color: #f4f4f4; /* Light grey background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Space inside the form */
+    max-width: 500px; /* Reduced maximum width */
+    width: 100%; /* Full width up to max-width */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for subtle 3D effect */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+/* Style for each form element */
+#add-project-form label {
+    display: block; /* Make labels block elements for vertical spacing */
+    margin-bottom: 8px; /* Space below labels */
+    font-weight: bold; /* Bold labels */
+}
+
+#add-project-form input[type="text"],
+#add-project-form input[type="email"],
+#add-project-form input[type="file"],
+#add-project-form textarea {
+    width: 100%; /* Full width input fields */
+    padding: 10px; /* Space inside input fields */
+    margin-bottom: 16px; /* Space below input fields */
+    border: 1px solid #ddd; /* Light border for input fields */
+    border-radius: 4px; /* Rounded corners for input fields */
+    box-sizing: border-box; /* Include padding and border in element’s total width and height */
+}
+
+#add-project-form button {
+    background-color: #007bff; /* Primary blue color */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    padding: 12px 20px; /* Padding inside button */
+    border-radius: 4px; /* Rounded corners for button */
+    font-size: 16px; /* Increase font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+#add-project-form button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+
+
+    </style>
 </head>
 
 <body id="landing-page">
@@ -124,21 +120,30 @@ fetch('/ongoing-projects')
         <h1>Dashboard</h1>
         <nav>
             <ul class="navbar">
-                <li><a href="faculty-ongoing-projects.html">Ongoing Projects</a></li>
-                <li><a href="faculty-completed-projects.html">Completed Projects</a></li>
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="faculty-manage.html">Faculty</a></li>
+                <li><a href="faculty-training.html">Project Interns</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Projects</a>
+                    <div class="dropdown-content">
+                        <a href="faculty-ongoing-projects.html">Ongoing Projects</a>
+                        <a href="faculty-completed-projects.html">Completed Projects</a>
+                    </div>
+                </li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
+        
     </header>
     <main>
         <section class="projects-section">
-            <h1>Ongoing Projects</h1>
-            <div id="projects-container" style="width: 90%; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px;">
+            <h1 style="width: 215px; margin: auto; padding: 20px;">Ongoing Projects</h1>
+            <div id="projects-container">
                 <!-- Projects will be dynamically inserted here -->
             </div>
         </section>
-        <section class="add-project-section">
-            <h2>Add New Project</h2>
+        <section >
+            <h2 style="width: 215px; margin: auto; padding: 20px;">Add New Project</h2>
             <form id="add-project-form" enctype="multipart/form-data">
                 <label for="project-name">Project Name:</label>
                 <input type="text" id="project-name" name="project_name" required>
@@ -157,7 +162,6 @@ fetch('/ongoing-projects')
             
                 <button type="submit">Add Project</button>
             </form>
-            
         </section>
     </main>
 
@@ -180,21 +184,43 @@ fetch('/ongoing-projects')
                         <p><strong>Mentor:</strong> ${project.mentor_name}</p>
                         <p><strong>Sponsor:</strong> ${project.sponsor_name}</p>
                         <p class="description">${project.description}</p>
-                        <button class="delete-button" data-id="${project.id}" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer; margin-top: 10px;">Delete</button>
+                        <button class="completed-button" data-id="${project.id}">Completed</button>
+                        <button class="delete-button" data-id="${project.id}">Delete</button>
                     `;
 
                     container.appendChild(projectElement);
                 });
 
-                // Add event listeners to delete buttons
+                // Add event listeners to "Completed" buttons
+                const completedButtons = document.querySelectorAll('.completed-button');
+                completedButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const projectId = this.getAttribute('data-id');
+
+                        // Send a DELETE request to the server to move to completed
+                        fetch(`/faculty-ongoing-projects/${projectId}`, {
+                            method: 'DELETE'
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                alert('Project moved to completed successfully!');
+                                location.reload(); // Reload the page to update the list
+                            } else {
+                                throw new Error('Error moving project to completed.');
+                            }
+                        })
+                        .catch(error => console.error('Error moving project to completed:', error));
+                    });
+                });
+
+                // Add event listeners to "Delete" buttons
                 const deleteButtons = document.querySelectorAll('.delete-button');
                 deleteButtons.forEach(button => {
                     button.addEventListener('click', function() {
-                        console.log("Delete button clicked");
                         const projectId = this.getAttribute('data-id');
-                        
-                        // Send a DELETE request to the server
-                        fetch(`/faculty-ongoing-projects/${projectId}`, {
+
+                        // Send a DELETE request to the server to remove the project
+                        fetch(`/delete-project/${projectId}`, {
                             method: 'DELETE'
                         })
                         .then(response => {
@@ -231,7 +257,6 @@ fetch('/ongoing-projects')
             })
             .catch(error => console.error('Error adding project:', error));
         });
-        
     </script>
 
     <footer>

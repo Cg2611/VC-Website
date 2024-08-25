@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Management</title>
+    <link rel="stylesheet" href="BG.css">
+    <link rel="stylesheet" href="landing.css">
+    <style>
+        /* Styling for the entire form */
+        #add-faculty-form {
+            background-color: #f4f4f4; /* Light grey background */
+            border-radius: 8px; /* Rounded corners */
+            padding: 20px; /* Space inside the form */
+            max-width: 500px; /* Maximum width of the form */
+            margin: 0 auto; /* Center the form horizontally */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for subtle 3D effect */
+        }
+
+        /* Style for each form element */
+        #add-faculty-form label {
+            display: block; /* Make labels block elements for vertical spacing */
+            margin-bottom: 8px; /* Space below labels */
+            font-weight: bold; /* Bold labels */
+        }
+
+        #add-faculty-form input[type="text"],
+        #add-faculty-form input[type="email"],
+        #add-faculty-form input[type="file"] {
+            width: 100%; /* Full width input fields */
+            padding: 10px; /* Space inside input fields */
+            margin-bottom: 16px; /* Space below input fields */
+            border: 1px solid #ddd; /* Light border for input fields */
+            border-radius: 4px; /* Rounded corners for input fields */
+            box-sizing: border-box; /* Include padding and border in element’s total width and height */
+        }
+
+        /* Style for submit button */
+        #add-faculty-form button {
+            background-color: #007bff; /* Primary blue color */
+            color: white; /* White text */
+            border: none; /* Remove default border */
+            padding: 12px 20px; /* Padding inside button */
+            border-radius: 4px; /* Rounded corners for button */
+            font-size: 16px; /* Increase font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+        }
+
+        /* Button hover effect */
+        #add-faculty-form button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+
+/* Styling for faculty member cards */
+.faculty-member {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Space between cards */
+}
+
+.faculty-member img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+        .faculty-member h2 {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        .faculty-member p {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .delete-button {
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border: none;
+            color: white;
+            background-color: red;
+            border-radius: 5px;
+        }
+
+        #faculty-container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+        }
+
+        footer {
+            background-color: rgba(19, 77, 143, 0.676);
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body id="landing-page">
+    <header id="header">
+        <h1>Dashboard</h1>
+        <nav>
+            <ul class="navbar">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="faculty-manage.html">Faculty</a></li>
+                <li><a href="faculty-training.html">Project Interns</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Projects</a>
+                    <div class="dropdown-content">
+                        <a href="faculty-ongoing-projects.html">Ongoing Projects</a>
+                        <a href="faculty-completed-projects.html">Completed Projects</a>
+                    </div>
+                </li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="team-section">
+            <h1 style="width: 135px; margin: auto; padding: 20px 5px;">Our Faculty</h1>
+            <div id="faculty-container">
+                <!-- Faculty members will be dynamically inserted here -->
+            </div>
+        </section>
+        <section class="add-faculty-section">
+            <h2 style="width: 300px; margin: auto; padding: 20px 5px;">Add New Faculty Member</h2>
+            <form id="add-faculty-form" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="specialization">Specialization:</label>
+                <input type="text" id="specialization" name="specialization" required>
+                
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                
+                <button type="submit">Add Faculty</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        fetch('/faculty')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('faculty-container');
+                data.forEach(member => {
+                    const facultyElement = document.createElement('div');
+                    facultyElement.classList.add('faculty-member');
+
+                    const imageUrl = `/faculty-image/${member.id}`;
+
+                    facultyElement.innerHTML = `
+                        <img src="${imageUrl}" alt="${member.name}" />
+                        <h2>${member.name}</h2>
+                        <p>Email: ${member.email}</p>
+                        <p>Specialization: ${member.specialization}</p>
+                        <button class="delete-button" data-id="${member.id}">Delete</button>
+                    `;
+
+                    container.appendChild(facultyElement);
+                });
+
+                // Add event listeners to "Delete" buttons
+                const deleteButtons = document.querySelectorAll('.delete-button');
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const facultyId = this.getAttribute('data-id');
+
+                        // Send a DELETE request to the server to remove the faculty member
+                        fetch(`/delete-faculty/${facultyId}`, {
+                            method: 'DELETE'
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                alert('Faculty member deleted successfully!');
+                                location.reload(); // Reload the page to update the list
+                            } else {
+                                throw new Error('Error deleting faculty member.');
+                            }
+                        })
+                        .catch(error => console.error('Error deleting faculty member:', error));
+                    });
+                });
+            })
+            .catch(error => console.error('Error fetching faculty members:', error));
+
+        document.getElementById('add-faculty-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+
+            fetch('/add-faculty', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Faculty member added successfully!');
+                    location.reload(); // Reload the page to show the new faculty member
+                } else {
+                    throw new Error('Error adding faculty member.');
+                }
+            })
+            .catch(error => console.error('Error adding faculty member:', error));
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2024 VC</p>
+    </footer>
+</body>
+</html>

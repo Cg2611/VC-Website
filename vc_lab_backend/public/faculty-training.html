@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Interns Management</title>
+    <link rel="stylesheet" href="BG.css">
+    <link rel="stylesheet" href="landing.css">
+    <style>
+
+    /* Styling for the entire form */
+    #add-intern-form {
+        background-color: #f4f4f4; /* Light grey background */
+        border-radius: 8px; /* Rounded corners */
+        padding: 20px; /* Space inside the form */
+        max-width: 500px; /* Maximum width of the form */
+        margin: 0 auto; /* Center the form horizontally */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for subtle 3D effect */
+    }
+
+    /* Style for each form element */
+    #add-intern-form label {
+        display: block; /* Make labels block elements for vertical spacing */
+        margin-bottom: 8px; /* Space below labels */
+        font-weight: bold; /* Bold labels */
+    }
+
+    #add-intern-form input[type="text"],
+    #add-intern-form input[type="email"],
+    #add-intern-form input[type="file"] {
+        width: 100%; /* Full width input fields */
+        padding: 10px; /* Space inside input fields */
+        margin-bottom: 16px; /* Space below input fields */
+        border: 1px solid #ddd; /* Light border for input fields */
+        border-radius: 4px; /* Rounded corners for input fields */
+        box-sizing: border-box; /* Include padding and border in element’s total width and height */
+    }
+
+    /* Style for submit button */
+    #add-intern-form button {
+        background-color: #007bff; /* Primary blue color */
+        color: white; /* White text */
+        border: none; /* Remove default border */
+        padding: 12px 20px; /* Padding inside button */
+        border-radius: 4px; /* Rounded corners for button */
+        font-size: 16px; /* Increase font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease; /* Smooth background color transition */
+    }
+
+    /* Button hover effect */
+    #add-intern-form button:hover {
+        background-color: #0056b3; /* Darker blue color on hover */
+    }
+
+    /* Styling for intern member cards */
+    .intern-member {
+        width: 300px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px; /* Space between cards */
+    }
+
+    .intern-member img {
+        width: 70%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .intern-member h2 {
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
+
+    .intern-member p {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+
+    .delete-button {
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-top: 10px;
+        border: none;
+        color: white;
+        background-color: red;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    #intern-container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+    }
+
+
+    </style>
+</head>
+<body id="landing-page">
+    <header id="header">
+        <h1>Intern Dashboard</h1>
+        <nav>
+            <ul class="navbar">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="faculty-manage.html">Faculty</a></li>
+                <li><a href="intern-manage.html">Project Interns</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Projects</a>
+                    <div class="dropdown-content">
+                        <a href="faculty-ongoing-projects.html">Ongoing Projects</a>
+                        <a href="faculty-completed-projects.html">Completed Projects</a>
+                    </div>
+                </li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intern-section">
+            <h1 style="width: 215px; margin: auto; padding: 20px;">Interning Students</h1>
+            <div id="intern-container">
+                <!-- Intern members will be dynamically inserted here -->
+            </div>
+        </section>
+        <section class="add-intern-section">
+            <h2 style="width: 200px; margin: auto; padding: 20px;">Add New Intern</h2>
+            <form id="add-intern-form" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="project">Project:</label>
+                <input type="text" id="project" name="project" required>
+
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+
+                <button type="submit">Add Intern</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        fetch('/interns')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('intern-container');
+                data.forEach(intern => {
+                    const internElement = document.createElement('div');
+                    internElement.classList.add('intern-member');
+
+                    const imageUrl = `/intern-image/${intern.id}`;
+
+                    internElement.innerHTML = `
+                        <img src="${imageUrl}" alt="${intern.name}" />
+                        <h2>${intern.name}</h2>
+                        <p>Email: ${intern.email}</p>
+                        <p>Project: ${intern.project}</p>
+                        <button class="delete-button" data-id="${intern.id}">Delete</button>
+                    `;
+
+                    container.appendChild(internElement);
+                });
+
+                // Add event listeners to "Delete" buttons
+                const deleteButtons = document.querySelectorAll('.delete-button');
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const internId = this.getAttribute('data-id');
+
+                        // Send a DELETE request to the server to remove the intern
+                        fetch(`/delete-intern/${internId}`, {
+                            method: 'DELETE'
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                alert('Intern deleted successfully!');
+                                location.reload(); // Reload the page to update the list
+                            } else {
+                                throw new Error('Error deleting intern.');
+                            }
+                        })
+                        .catch(error => console.error('Error deleting intern:', error));
+                    });
+                });
+            })
+            .catch(error => console.error('Error fetching interns:', error));
+
+        document.getElementById('add-intern-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('/add-intern', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Intern added successfully!');
+                    location.reload(); // Reload the page to show the new intern
+                } else {
+                    throw new Error('Error adding intern.');
+                }
+            })
+            .catch(error => console.error('Error adding intern:', error));
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2024 VC</p>
+    </footer>
+</body>
+</html>
