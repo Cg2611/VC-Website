@@ -27,7 +27,7 @@ const db = mysql.createConnection({
     host: '127.0.0.1',
     port: 3306,
     user: 'root',
-    password: 'root',
+    password: 'Aneesh@60',
     database: 'vc_lab'
 });
 
@@ -110,28 +110,32 @@ app.post('/submit-contact-form', upload.none(), (req, res) => {
     });
 });
 
+
+
+
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
     db.query('SELECT password FROM faculty WHERE username = ?', [username], (err, results) => {
         if (err) {
             console.error('Database error:', err);
-            return res.status(500).send('Server error');
+            return res.status(500).json({ success: false, message: 'Server error' });
         }
 
         if (results.length > 0) {
             const storedPassword = results[0].password;
 
             if (password === storedPassword) {
-                res.redirect('/landing.html');
+                return res.json({ success: true, redirectUrl: '/landing.html' });
             } else {
-                res.status(401).send('Invalid username or password');
+                return res.status(401).json({ success: false, message: 'Invalid username or password' });
             }
         } else {
-            res.status(401).send('Invalid username or password');
+            return res.status(401).json({ success: false, message: 'Invalid username or password' });
         }
     });
 });
+
 
 
 // Serve static files
