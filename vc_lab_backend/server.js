@@ -6,7 +6,7 @@ const path = require('path');
 const nodemailer = require('nodemailer'); // Add Nodemailer
 
 const app = express();
-// const port = 3000;
+const port = process.env.PORT;
 
 // Set up multer for parsing multipart/form-data
 const upload = multer();
@@ -598,9 +598,16 @@ app.get('/logout', (req, res) => {
     });
 });
 // Start the server
-// app.listen(port, () => {
-//     console.log(`Server running on http://localhost:${port}`);
-// });
+
+
+if (port) {
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+    });
+} else {
+    console.log('PORT not set. Server will not start locally.');
+}
+
 
 }
 
