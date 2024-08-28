@@ -6,7 +6,7 @@ const path = require('path');
 const nodemailer = require('nodemailer'); // Add Nodemailer
 
 const app = express();
-const port = 3000;
+// const port = 3000;
 
 // Set up multer for parsing multipart/form-data
 const upload = multer();
@@ -31,12 +31,12 @@ const db = mysql.createConnection({
     database: 'vc_lab'
 });
 
-db.connect(err => {
-    if (err) {
-        throw err;
-    }
-    console.log('MySQL connected...');
-});
+// db.connect(err => {
+//     if (err) {
+//         throw err;
+//     }
+//     console.log('MySQL connected...');
+// });
 
 // Route to handle internship form submission
 app.post('/submit-internship', upload.none(), (req, res) => {
@@ -598,7 +598,10 @@ app.get('/logout', (req, res) => {
     });
 });
 // Start the server
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`Server running on http://localhost:${port}`);
+// });
+
+}
+
 
