@@ -24,10 +24,10 @@ app.use(session({
 }));
 // Set up MySQL connection
 const db = mysql.createConnection({
-    host: 'mysql-21472e3d-abhinvk1000-ee45.a.aivencloud.com',
-    port: 19355,
-    user: 'avnadmin',
-    password: 'AVNS_T2bnTDBLfJy5n-WKH0J',
+    host: '127.0.0.1',
+    port: 3306,
+    user: 'root',
+    password: 'root',
     database: 'vc_lab'
 });
 
