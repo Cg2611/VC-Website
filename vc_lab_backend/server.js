@@ -39,15 +39,21 @@ const db = mysql.createConnection({
 // });
 
 // Route to handle internship form submission
+
+
 app.post('/submit-internship', upload.none(), (req, res) => {
     const { name, email, phone, college, resume, additional_info } = req.body;
 
+    // Validate required fields
     if (!name || !email || !phone || !college || !resume) {
         return res.status(400).send('Missing required fields');
     }
 
-    const sql = 'INSERT INTO InternshipForm (name, email, phone, college, resumedrivelink, additional_info) VALUES (?, ?, ?, ?, ?, ?)';
-    db.query(sql, [name, email, phone, college, resume, additional_info], (err, result) => {
+    // SQL query (excluding 'created_at' as it will be auto-generated)
+    const sql = 'INSERT INTO InternshipForm (name, email, phone_number, college, resumedrivelink, additional_information) VALUES (?, ?, ?, ?, ?, ?)';
+
+    // Execute the query
+    db.query(sql, [name, email, phone, college, resume, additional_info || null], (err, result) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).send('An error occurred while submitting the form.');
