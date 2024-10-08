@@ -239,14 +239,14 @@ app.post('/send-mail', upload.none(), async (req, res) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: '',
-            pass: '',
+            user: 'onlytechzie@gmail.com',
+            pass: 'monutantech@2003',
         },
     });
 
     // Set up email data
     let mailOptions = {
-        from: '',
+        from: 'onlytechzie@gmail.com',
         to: to,
         subject: subject,
         text: message,
