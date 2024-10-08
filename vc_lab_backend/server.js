@@ -46,7 +46,7 @@ app.post('/submit-internship', upload.none(), (req, res) => {
         return res.status(400).send('Missing required fields');
     }
 
-    const sql = 'INSERT INTO InternshipForm (name, email, phone, college, resume, additional_info) VALUES (?, ?, ?, ?, ?, ?)';
+    const sql = 'INSERT INTO InternshipForm (name, email, phone, college, resumedrivelink, additional_info) VALUES (?, ?, ?, ?, ?, ?)';
     db.query(sql, [name, email, phone, college, resume, additional_info], (err, result) => {
         if (err) {
             console.error('Database error:', err);
