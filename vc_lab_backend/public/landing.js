@@ -115,10 +115,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             <tr>
                                 <td>${row.name || ''}</td>
                                 <td>${row.email || ''}</td>
-                                <td>${row.phone || ''}</td>
+                                <td>${row.phone_number || ''}</td>
                                 <td>${row.college || ''}</td>
-                                <td><a href="${row.resume || '#'}" target="_blank">${row.resume ? 'Link' : ''}</a></td>
-                                <td>${row.additional_info || ''}</td>
+                                <td><a href="${row.resumedrivelink || '#'}" target="_blank">${row.resumedrivelink ? 'Link' : ''}</a></td>
+                                <td>${row.additional_information || ''}</td>
                                 <td>${row.created_at || ''}</td>
                             </tr>
                         `;

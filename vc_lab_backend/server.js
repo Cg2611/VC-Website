@@ -6,7 +6,7 @@ const path = require('path');
 const nodemailer = require('nodemailer'); // Add Nodemailer
 
 const app = express();
-const port = process.env.PORT;
+const port = 3000;
 
 // Set up multer for parsing multipart/form-data
 const upload = multer();
@@ -24,10 +24,10 @@ app.use(session({
 }));
 // Set up MySQL connection
 const db = mysql.createConnection({
-    host: 'mysql-21472e3d-abhinvk1000-ee45.a.aivencloud.com',
-    port: 19355,
-    user: 'avnadmin',
-    password: 'AVNS_T2bnTDBLfJy5n-WKH0J',
+    host: '127.0.0.1',
+    port: 3306,
+    user: 'root',
+    password: 'root',
     database: 'vc_lab'
 });
 
@@ -245,14 +245,14 @@ app.post('/send-mail', upload.none(), async (req, res) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'onlytechzie@gmail.com',
-            pass: 'monutantech@2003',
+            user: 'gcindia003@gmail.com',
+            pass: 'rsal deqg zdkd baoc',
         },
     });
 
     // Set up email data
     let mailOptions = {
-        from: 'onlytechzie@gmail.com',
+        from: 'gcindia003@gmail.com',
         to: to,
         subject: subject,
         text: message,
