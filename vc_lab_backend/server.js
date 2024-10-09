@@ -6,7 +6,7 @@ const path = require('path');
 const nodemailer = require('nodemailer'); // Add Nodemailer
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 // Set up multer for parsing multipart/form-data
 const upload = multer();
